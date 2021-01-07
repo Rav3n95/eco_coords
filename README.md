@@ -14,11 +14,11 @@ SCROLL or NUMPAD + / -
 
 change marker z position
 
-SHIFT + SCROLL or NUMPAD + / -
+SHIFT + SCROLL
 
 change marker size
 
-SHIFT + CTRL + SCROLL or NUMPAD + / -
+SHIFT + CTRL + SCROLL
 
 change marker type
 
