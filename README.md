@@ -1,14 +1,14 @@
 eco_coords included qalle_coords parts
 
-#ECO COORDS
+# ECO COORDS
 - Save coords in server side
 - Copy to clipboard
 
-##COMMANDS:
+## COMMANDS:
 'coords' ON / OFF
 'resetcoords' set default settings 
 
-##CONTROLS
+## CONTROLS
 
 SCROLL or NUMPAD + / -
 
