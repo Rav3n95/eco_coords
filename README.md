@@ -6,12 +6,15 @@ eco_coords included qalle_coords parts
 
 ## COMMANDS:
 '/coords' ON / OFF
+
 '/resetcoords' set default settings 
 
 ## CONTROLS
 
 SCROLL or NUMPAD + / -: change marker z position
+
 SHIFT + SCROLL: change marker size
+
 SHIFT + CTRL + SCROLL: change marker type
 
 https://youtu.be/cLlLQcgBbAk
