@@ -2,7 +2,7 @@ Config = {}
 
 -- MARKER SETTINGS
 Config.MarkerPosZ = -0.95 -- circle: -0.95, floating marker: 1.0
-Config.MarkerScaleXY = 2.0 -- 2.0 marker dimension: width
+Config.MarkerscaleXYZ = 2.0 -- 2.0 marker dimension: width
 Config.MarkerScaleZ = 1.0 -- marker dimension: height
 Config.MarkerType = 23 -- https://docs.fivem.net/docs/game-references/markers/
 
@@ -12,7 +12,8 @@ Config.Formatting = 1 -- 1: VECTOR3, 2: XYZ, 3: XYZH
 Config.AddZoneName = 1 -- 0 or 1
 Config.AddDescription = 1 -- 0 or 1
 Config.AddHeading = 1 -- 0 or 1
-Config.AddMarkerScaleXY = 1 -- 0 or 1 (radius or width)
+Config.AddMarkerscaleXYZ = 1 -- 0 or 1 (radius or width)
+Config.CopyToClipboard = 1 -- 0 or 1
 
 
 Config.ZoneNames = {

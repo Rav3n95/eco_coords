@@ -1,5 +1,5 @@
 RegisterNetEvent('eco_coords:saveCoord')
-AddEventHandler('eco_coords:saveCoord', function(coordX, coordY, coordZ, scaleXY, heading, location, description)
+AddEventHandler('eco_coords:saveCoord', function(coordX, coordY, coordZ, scaleXYZ, heading, location, description)
 
     local file, path, formattedCoord, prefix, suffix, text
 
@@ -57,9 +57,9 @@ AddEventHandler('eco_coords:saveCoord', function(coordX, coordY, coordZ, scaleXY
         suffix = ("%s\nheading = %s"):format(suffix, heading)
     end
 
-    if Config.AddMarkerScaleXY == 1 then
+    if Config.AddMarkerscaleXYZ == 1 then
 
-        suffix = ("%s\nscale = %s"):format(suffix, scaleXY)
+        suffix = ("%s\nscale = %s"):format(suffix, scaleXYZ)
     end
 
 

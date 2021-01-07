@@ -15,3 +15,11 @@ server_scripts {
     'config.lua',
     'server.lua'
 }
+
+ui_page 'html/ui.html'
+
+files {
+    'html/ui.html',
+    'html/styles.css',
+    'html/scripts.js'
+}

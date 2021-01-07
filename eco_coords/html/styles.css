@@ -1,0 +1,33 @@
+html {
+	overflow: hidden;
+	font-family: 'Open Sans', sans-serif;
+}
+
+#container {
+
+	font-size: 14px;
+	position: absolute;
+	right: 50px;
+	bottom: 200px;
+	width: 350px;
+	padding: 5px;
+	align-items: center;
+	background-color: #3a576a;
+	color: #c9c9c9;
+}
+
+#blockHead {
+	display: block;
+	font-size: 16px;
+	padding: 5px;
+	background-color: #06263f;
+	font-weight: bold;
+	color: #fff;
+}
+
+#container ul {
+
+	padding: 10px 0;
+	margin: 0;
+	list-style-type: none;
+}

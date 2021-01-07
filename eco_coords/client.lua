@@ -8,7 +8,8 @@ Citizen.CreateThread(function()
 end)
 
 local zMod = Config.MarkerPosZ
-local scaleXY = Config.MarkerScaleXY
+local scaleXYZ = Config.MarkerscaleXYZ
+local markerType = Config.MarkerType
 local activate, _PlayerPedId
 
 
@@ -31,35 +32,56 @@ Citizen.CreateThread(function()
             coordZ = FormatCoord(coord.z + zMod)
             heading = FormatCoord(GetEntityHeading(_PlayerPedId))
 
-            DrawMarker(
-                Config.MarkerType, 
+            DrawMarker(markerType,
                 coordX,
                 coordY,
-                coordZ, 
+                coordZ,
                 0.0, 0.0, 0.0, -- dir
                 0, 0.0, 0.0, -- root
-                scaleXY, scaleXY, Config.MarkerScaleZ,
+                scaleXYZ, scaleXYZ, scaleXYZ,
                 255, 0, 0, 100, -- RGBA
                 false, -- bobUpAndDown
                 false, 2, false, false, false, false)
 
-            DrawGenericText(("~g~X~w~: %s ~g~Y~w~: %s ~g~Z~w~: %s ~g~H~w~: %s ~g~R~w~: %s ~g~SAVE~w~: SHIFT+X"):format(coordX, coordY, coordZ, heading, scaleXY))
+            DrawGenericText(("~g~X~w~: %s ~g~Y~w~: %s ~g~Z~w~: %s ~g~H~w~: %s ~g~R~w~: %s ~g~MARKER~w~: %s"):format(coordX, coordY, coordZ, heading, scaleXYZ, markerType))
 
             -- SHIFT
             if IsControlPressed(0, 61) then
 
-                -- SHIFT + SCROLL 16 or 97
-                if IsControlJustReleased(0, 97) then
+                -- SHIFT - LEFT CTRL
+                if not IsControlPressed(0, 36) then
 
-                    if scaleXY > 1 then
-                        scaleXY = scaleXY - 0.2
+                    -- SHIFT + SCROLL
+                    if IsControlJustReleased(0, 97) then
+
+                        if scaleXYZ > 1 then
+                            scaleXYZ = scaleXYZ - 0.2
+                        end
+                    end
+
+                    -- SHIFT + SCROLL
+                    if IsControlJustReleased(0, 96) then
+
+                        scaleXYZ = scaleXYZ + 0.2
                     end
                 end
 
-                -- SHIFT + SCROLL 17 or 96
-                if IsControlJustReleased(0, 96) then
+                -- SHIFT + LEFT CTRL
+                if IsControlPressed(0, 36) then
 
-                    scaleXY = scaleXY + 0.2
+                    if IsControlJustReleased(0, 96) then
+
+                        if markerType < 43 then
+                            markerType = markerType + 1
+                        end
+                    end
+
+                    if IsControlJustReleased(0, 97) then
+
+                        if markerType > 0 then
+                            markerType = markerType - 1
+                        end
+                    end
                 end
 
                 -- SHIFT+X
@@ -76,14 +98,30 @@ Citizen.CreateThread(function()
                         zoneName = Config.ZoneNames[zoneHash]
                     end
 
-                    local description = KeyboardInput() or 'no description'
+                    -- ADD DESCRIPTION
+                    local description = 'no description'
 
-                    TriggerServerEvent('eco_coords:saveCoord', coordX, coordY, coordZ, scaleXY, heading, zoneName .. " - " .. streetName, description)
-                    ESX.ShowNotification("Pozició: " .. zoneName .. " - " .. streetName .. "~n~~g~" .. coordX.. ", " ..coordY .. ", " .. coordZ)
+                    if Config.AddDescription == 1 then
+
+                        local description = KeyboardInput() or 'no description'
+                    end
+
+                    -- COPY TO CLPBOARD
+                    if Config.CopyToClipboard == 1 then
+
+                        SendNUIMessage({
+                            text = ("%s, %s, %s, h: %s"):format(coordX, coordY, coordZ, heading)
+                        })
+
+                        ESX.ShowNotification("Vágólapra másolva")
+                    end
+
+                    TriggerServerEvent('eco_coords:saveCoord', coordX, coordY, coordZ, scaleXYZ, heading, zoneName .. " - " .. streetName, description)
+                    ESX.ShowNotification(("Pozició: %s - %s~n~~g~%s, %s, %s"):format(zoneName, streetName, coordX, coordY, coordZ))
                 end
             else
 
-                --SCROLL 16 or 97
+                --SCROLL
                 if IsControlJustReleased(0, 97) then
 
                     if zMod > -1 then
@@ -91,7 +129,7 @@ Citizen.CreateThread(function()
                     end
                 end
 
-                --SCROLL 17 or 96
+                --SCROLL
                 if IsControlJustReleased(0, 96) then
 
                     zMod = zMod + 0.05
@@ -125,7 +163,8 @@ RegisterNetEvent('eco_coords:resetCoords')
 AddEventHandler('eco_coords:resetCoords', function()
 
     zMod = Config.MarkerPosZ
-    scaleXY = Config.MarkerScaleXY
+    scaleXYZ = Config.MarkerscaleXYZ
+    markerType = Config.MarkerType
 end)
 
 FormatCoord = function(coord)
