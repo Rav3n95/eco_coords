@@ -103,7 +103,7 @@ Citizen.CreateThread(function()
 
                     if Config.AddDescription == 1 then
 
-                        local description = KeyboardInput() or 'no description'
+                        description = KeyboardInput() or 'no description'
                     end
 
                     -- COPY TO CLPBOARD
