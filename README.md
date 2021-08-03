@@ -1,5 +1,7 @@
 eco_coords included qalle_coords parts
 
+:pencil2: Tutya Discord elérhetősége (fejlesztő): HipnotikusAvasSzalonna#3252
+
 # ECO COORDS
 - Save coords server side in txt file
 - Copy to clipboard
