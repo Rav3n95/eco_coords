@@ -1,11 +1,9 @@
-eco_coords included qalle_coords parts
-
 # ECO COORDS
 - Save coords server side in txt file
 - Copy to clipboard
 
 ## COMMANDS:
-- '/coords' ON / OFF
+- '/eco_coord' ON / OFF
 - '/resetcoords' set default settings 
 
 ## CONTROLS

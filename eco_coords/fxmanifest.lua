@@ -1,20 +1,15 @@
 fx_version 'cerulean'
 game 'gta5'
 
-
-author 'Ekhion'
+author 'Ekhion, Rav3n95'
 description 'Economy - Coords'
-version '0.0.1beta'
+version '0.0.2'
 
-client_scripts {
-    'config.lua',
-    'client.lua'
-}
+client_script 'client.lua'
 
-server_scripts {
-    'config.lua',
-    'server.lua'
-}
+server_script 'server.lua'
+
+shared_script 'config.lua'
 
 ui_page 'html/ui.html'
 
